@@ -7,5 +7,5 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      # Map the Windows folder to /metabase-data in the container
+      # Map the folder to /metabase-data in the container
       - ./data/sqlite:/metabase-data
