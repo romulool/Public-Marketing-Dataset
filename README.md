@@ -1,6 +1,5 @@
 ## 📄 `README.md`
 
-````markdown
 # 📊 Public Marketing Dataset Dashboard
 
 This project presents a complete data analytics workflow using the [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). It demonstrates how to clean, structure, and explore marketing data using **SQL**, **SQLite**, and **Metabase**, focusing on actionable business insights.
@@ -158,4 +157,3 @@ Statistician & Data Scientist
 ## 📜 License
 
 This project is open-source and licensed under the **MIT License**.
-````
