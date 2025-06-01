@@ -9,8 +9,8 @@ WITH orders_per_day AS (
 	
 orders_last_60_days AS(
 	SELECT number_of_orders,
-	CASE WHEN purchase_date BETWEEN DATE(CURRENT_DATE, '-60 day') AND DATE(CURRENT_DATE, '-30 day') THEN 1
-		WHEN purchase_date BETWEEN DATE(CURRENT_DATE, '-30 day') AND CURRENT_DATE THEN 0 
+	CASE WHEN purchase_date BETWEEN DATE({{Reference_date}}, '-60 day') AND DATE({{Reference_date}}, '-30 day') THEN 1
+		WHEN purchase_date BETWEEN DATE({{Reference_date}}, '-30 day') AND {{Reference_date}} THEN 0 
 		ELSE 2 END AS previous_month
 	FROM orders_per_day
 )

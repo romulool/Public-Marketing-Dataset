@@ -4,8 +4,7 @@ WITH RECURSIVE dates(date) AS (
 	UNION ALL
 	SELECT date(date, '+1 day')
 	FROM dates
-	WHERE dates.date < (SELECT MAX(STRFTIME('%Y-%m-%d',order_purchase_timestamp))
-						FROM olist_orders_dataset)
+	WHERE dates.date < {{Reference_date}}
 ),
 weeks AS (
 	SELECT date AS week_start,
@@ -14,12 +13,13 @@ weeks AS (
 	WHERE STRFTIME('%w',date) = '0'
 ),
 orders_table AS(
-SELECT STRFTIME('%Y-%m-%d',order_purchase_timestamp) AS purchase_date,
-COUNT(DISTINCT(order_id)) AS orders
-FROM olist_orders_dataset
-WHERE order_status != 'canceled'
-GROUP BY 1
-ORDER BY 1
+	SELECT STRFTIME('%Y-%m-%d',order_purchase_timestamp) AS purchase_date,
+	COUNT(DISTINCT(order_id)) AS orders
+	FROM olist_orders_dataset
+	WHERE order_status != 'canceled'
+	AND order_purchase_timestamp <= {{Reference_date}}
+	GROUP BY 1
+	ORDER BY 1
 )
 
 SELECT weeks.week_start AS week,

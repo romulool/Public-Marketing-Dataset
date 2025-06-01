@@ -113,7 +113,6 @@ The dashboard explores:
 * 📦 Order volume and growth trends
 * 💰 Revenue by product category
 * 🛒 Top-selling products
-* 🔄 Conversion rates
 * 🌍 Regional customer insights
 
 Screenshots and descriptions will be saved in `/dashboard/`.

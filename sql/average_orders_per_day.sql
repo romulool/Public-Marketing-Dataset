@@ -7,6 +7,6 @@ WITH orders_per_day AS(
 	ORDER BY 1
 )
 
-SELECT COALESCE(AVG(number_of_orders),0) AS average_orders
+SELECT COALESCE(ROUND(AVG(number_of_orders)),0) AS average_orders
 FROM orders_per_day
-WHERE purchase_date >= DATE(CURRENT_DATE, '-90 day');
+WHERE purchase_date >= DATE({{reference_date}}, '-90 day');
